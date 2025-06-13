@@ -79,13 +79,12 @@ def create_user(username, email, password):
     user = User(username, email)
     user.set_password(password)
     # check if the user already exists
-    if user_exists(username, password, []):  # Assuming an empty list for demonstration
+    if user_exists(username, password):  # Assuming an empty list for demonstration
         raise ValueError("User already exists with this username and password.")
     return user    
 
 # funciton to check if a user/password combination exists. Assume you check the local database or a list of users.
-
-def user_exists(username, password, user_list):
+def user_exists(username, password):
     """
     Check if a user exists with the given username and password.
     Args:
@@ -95,6 +94,17 @@ def user_exists(username, password, user_list):
     Returns:
         bool: True if the user exists, False otherwise.
     """
+    # Load existing users from the CSV file
+    try:
+        user_data = pd.read_csv(path_to_user_data)
+    except FileNotFoundError:
+        print("User data file not found. No users exist.")
+        return False  # No users exist if the file is not found
+    
+    # Convert the DataFrame to a list of User objects
+    user_list = [User(row['username'], row['email']) for index, row in user_data.iterrows()]
+    # Set the password for each user
+
     for user in user_list:
         if user.get_username() == username and user.password == password:
             return True

@@ -1,0 +1,31 @@
+# This is a GitHub Actions workflow tutorial for myself
+name: Recipe for GitHub Actions
+
+on: push # This workflow triggers on push events
+
+jobs: 
+    build:
+        runs-on:  ubuntu-latest
+        steps:
+        # This is a step in the workflow
+        - name: Checkout Code 
+          uses: actions/checkout@v4 # This step checks out the repository code
+
+        # This step will setup python
+        - name: Setup Python
+          uses: actions/setup-python@v5
+          with:
+            python-version: '3.11' # Specify the Python version to use
+
+        # We install packages using pip
+        - name: Install Packages
+          run: |
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt 
+       
+        # This step runs the main script
+        - name: Execute tests
+          env: 
+            MY_API_KEY: ${{ secrets.MY_API_KEY }} # Use a secret from GitHub
+          run: python tests.py # This step runs the main script
+        
