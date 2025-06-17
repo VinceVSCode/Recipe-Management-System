@@ -1,37 +1,32 @@
-import os
-import pandas as pd
+from modules.recipe_manager import add_recipe, view_all_recipes, view_recipe_by_name
 
-# user creation module
-# save recepies
-# have categories, have reviews, have ratings
-# exports to pdf or email
+def main():
+    while True:
+        print("\nRecipe Manager")
+        print("1. Add Recipe")
+        print("2. View All Recipes")
+        print("3. View Recipe by Name")
+        print("4. Exit")
 
-# sent recepies to other users, share with friends
+        choice = input("Select an option: ")
 
-# future
-# -  Add some API functionality to fetch recipes from an external source
+        if choice == "1":
+            title = input("Recipe Title: ")
+            ingredients = input("Ingredients (comma-separated): ").split(",")
+            steps = input("Steps: ")
+            category = input("Category: ")
+            add_recipe(title.strip(), [i.strip() for i in ingredients], steps.strip(), category.strip())
+            print("✅ Recipe added.")
+        elif choice == "2":
+            view_all_recipes()
+        elif choice == "3":
+            title = input("Enter recipe title: ")
+            view_recipe_by_name(title.strip())
+        elif choice == "4":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
 
-
-
-
-
-    
-# A simple function to print "Hello, World!"
-def Hello_World():
-    print("Hello, World!")
-
-def secret_function():
-    my_api_key = os.getenv("MY_API_KEY")
-    if my_api_key:
-        print(f"Your API key is: {my_api_key[:7]}... (hidden for security)")
-    else:
-        print("No API key found.")
-
-    # This function is not intended to be called directly
-    print("This is a secret function!")
-
-# This is the entry point of the script
 if __name__ == "__main__":
-    Hello_World()
-    secret_function()
-# Note: Ensure that the environment variable MY_API_KEY is set before running this script.
+    main()

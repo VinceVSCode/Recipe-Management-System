@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Bacon & Eggs",
+        "ingredients": [
+            "Bacon",
+            "Eggs",
+            "Oil or Butter",
+            "Salt",
+            "Pepper"
+        ],
+        "steps": "Step 1 Preheat the pan, Step 2 add your oil or butter, Step 3 add the bacon , Step 4 add the eggs, Step 5 add salt and pepper, Step 6 Enjoy!",
+        "category": "Breakfast"
+    }
+]
