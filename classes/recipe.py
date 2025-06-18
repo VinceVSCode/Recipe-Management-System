@@ -19,7 +19,7 @@ class Recipe:
     def from_user_input(cls):
         title = input("Recipe Title: ").strip()
         ingredients = input("Ingredients (comma-separated): ").split(",")
-        steps = input("Steps: ")  # don't strip, preserve formatting
+        steps = input("Steps: ")  # don't strip because we want to preserve formatting
         category = input("Category: ").strip()
         return cls(
             title=title,
