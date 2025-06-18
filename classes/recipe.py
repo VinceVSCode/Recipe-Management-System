@@ -13,6 +13,21 @@ class Recipe:
         self.steps = steps
         self.category = category
 
+    
+
+    @classmethod
+    def from_user_input(cls):
+        title = input("Recipe Title: ").strip()
+        ingredients = input("Ingredients (comma-separated): ").split(",")
+        steps = input("Steps: ")  # don't strip, preserve formatting
+        category = input("Category: ").strip()
+        return cls(
+            title=title,
+            ingredients=[i.strip() for i in ingredients],
+            steps=steps,
+            category=category
+        )
+
     def to_dict(self) -> dict:
         return {
             "title": self.title,

@@ -1,6 +1,18 @@
-from modules.recipe_manager import add_recipe, view_all_recipes, view_recipe_by_name
+"""
+main.py - v1.2.1
+Functionality:
+- CLI interface to manage recipes
+- Uses Recipe and RecipeBook classes
+- Recipe class handles its own user input
+"""
+
+from classes.recipe import Recipe
+from classes.recipe_book import RecipeBook
+from path import RECIPE_FILE
 
 def main():
+    book = RecipeBook(RECIPE_FILE)
+
     while True:
         print("\nRecipe Manager")
         print("1. Add Recipe")
@@ -11,17 +23,23 @@ def main():
         choice = input("Select an option: ")
 
         if choice == "1":
-            title = input("Recipe Title: ")
-            ingredients = input("Ingredients (comma-separated): ").split(",")
-            steps = input("Steps: ")
-            category = input("Category: ")
-            add_recipe(title.strip(), [i.strip() for i in ingredients], steps.strip(), category.strip())
+            recipe = Recipe.from_user_input()
+            book.add(recipe)
             print("✅ Recipe added.")
+
         elif choice == "2":
-            view_all_recipes()
+            book.list_all()
+
         elif choice == "3":
             title = input("Enter recipe title: ")
-            view_recipe_by_name(title.strip())
+            recipe = book.get_by_title(title.strip())
+            if recipe:
+                print(f"\n📖 {recipe.title} ({recipe.category})")
+                print(f"Ingredients: {', '.join(recipe.ingredients)}")
+                print(f"Steps: {recipe.steps}")
+            else:
+                print("❌ Recipe not found.")
+
         elif choice == "4":
             print("Goodbye!")
             break

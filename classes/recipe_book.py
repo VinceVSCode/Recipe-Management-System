@@ -7,6 +7,7 @@ Functionality:
 
 import json
 from pathlib import Path
+from typing import Optional
 from classes.recipe import Recipe
 
 class RecipeBook:
@@ -34,7 +35,7 @@ class RecipeBook:
         for i, r in enumerate(self.recipes, 1):
             print(f"{i}. {r.title} ({r.category})")
 
-    def get_by_title(self, title: str) -> Recipe:
+    def get_by_title(self, title: str) -> Optional[Recipe]:
         for r in self.recipes:
             if r.title.lower() == title.lower():
                 return r
