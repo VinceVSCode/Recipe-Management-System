@@ -34,3 +34,8 @@ def print_paths():
     print(f"\033[96mVirtual Environment Directory: {VENV_DIR}\033[0m")
     print(f"\033[97mClasses Directory: {CLASSES_DIR}\033[0m")
     print(f"\033[90mLogs Directory: {LOGS_DIR}\033[0m")
+
+
+# DEBUG: Print paths if Docker testing is enabled
+if os.getenv("DOCKER_TEST", "0") == "1":
+    print_paths()

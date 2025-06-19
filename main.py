@@ -20,7 +20,7 @@ def main():
         print("3. View Recipe by Name")
         print("4. Exit")
 
-        choice = input("Select an option: ")
+        choice = input("Select an option:")
 
         if choice == "1":
             recipe = Recipe.from_user_input()

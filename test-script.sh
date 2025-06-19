@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Step 1: Add a test recipe using a temp container
-docker run --rm -v "$(pwd)/data:/app/data" recipe-app python -c "
+docker run -e DOCKER_TEST=1 --rm -v "$(pwd)/data:/app/data" recipe-app python -c "
 from classes.recipe import Recipe
 from classes.recipe_book import RecipeBook
 from path import RECIPE_FILE
