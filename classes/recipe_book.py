@@ -35,7 +35,14 @@ class RecipeBook:
         for i, r in enumerate(self.recipes, 1):
             print(f"{i}. {r.title} ({r.category})")
 
-    def get_by_title(self, title: str) -> Optional[Recipe]:
+    
+    def get_all(self):
+        """
+        Returns a list of all Recipe objects in the recipe book.
+        """
+        return self.recipes
+
+def get_by_title(self, title: str) -> Optional[Recipe]:
         for r in self.recipes:
             if r.title.lower() == title.lower():
                 return r
