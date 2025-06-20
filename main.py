@@ -1,17 +1,16 @@
+
 """
-main.py - v1.2.1
+main.py - v1.6
 Functionality:
-- CLI interface to manage recipes
-- Uses Recipe and RecipeBook classes
+- CLI interface to manage recipes using RecipeManager
 - Recipe class handles its own user input
 """
 
 from classes.recipe import Recipe
-from classes.recipe_book import RecipeBook
-from path import RECIPE_FILE
+from modules.recipe_manager import RecipeManager
 
 def main():
-    book = RecipeBook(RECIPE_FILE)
+    manager = RecipeManager()
 
     while True:
         print("\nRecipe Manager")
@@ -24,15 +23,22 @@ def main():
 
         if choice == "1":
             recipe = Recipe.from_user_input()
-            book.add(recipe)
+            manager.add_recipe(recipe.title, recipe.ingredients, recipe.steps, recipe.category)
             print("✅ Recipe added.")
 
         elif choice == "2":
-            book.list_all()
+            all_recipes = manager.list_all()
+            if all_recipes:
+                print("\n📘 All Recipes:")
+                for r in all_recipes:
+                    print(f" - {r.title}")
+            else:
+                print("ℹ️  No recipes found.")
 
         elif choice == "3":
             title = input("Enter recipe title: ")
-            recipe = book.get_by_title(title.strip())
+            matches = manager.search_by_title(title.strip())
+            recipe = matches[0] if matches else None
             if recipe:
                 print(f"\n📖 {recipe.title} ({recipe.category})")
                 print(f"Ingredients: {', '.join(recipe.ingredients)}")

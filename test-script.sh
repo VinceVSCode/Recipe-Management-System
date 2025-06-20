@@ -8,6 +8,8 @@ from path import RECIPE_FILE
 r = Recipe('Test Recipe', ['egg', 'milk'], 'Mix well.', 'Test')
 book = RecipeBook(RECIPE_FILE)
 book.add(r)
+print (book.list_all())
+book.save()
 print('✅ Test recipe added.')
 "
 
