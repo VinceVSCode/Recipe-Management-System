@@ -42,52 +42,8 @@ class RecipeBook:
         """
         return self.recipes
 
-    def get_by_title(self, title: str) -> Optional[Recipe]:
-            for r in self.recipes:
-                if r.title.lower() == title.lower():
-                    return r
-            return None
-
-
-    def delete(self, title: str) -> bool:
-        """
-        Deletes a recipe by title. Returns True if deleted, False if not found.
-        """
-        for i, recipe in enumerate(self.recipes):
-            if recipe.title.lower() == title.lower():
-                del self.recipes[i]
-                self.save()
-                return True
-        return False
-
-    def update(self, title: str, new_recipe: Recipe) -> bool:
-        """
-        Replaces an existing recipe with the same title.
-        """
-        for i, recipe in enumerate(self.recipes):
-            if recipe.title.lower() == title.lower():
-                self.recipes[i] = new_recipe
-                self.save()
-                return True
-        return False
-
-    def search_by_title(self, keyword: str) -> list:
-        """
-        Returns recipes whose titles contain the keyword.
-        """
-        keyword = keyword.lower()
-        return [
-            recipe for recipe in self.recipes
-            if keyword in recipe.title.lower()
-        ]
-
-    def search_by_ingredient(self, keyword: str) -> list:
-        """
-        Returns recipes whose ingredients contain the keyword.
-        """
-        keyword = keyword.lower()
-        return [
-            recipe for recipe in self.recipes
-            if any(keyword in ing.lower() for ing in recipe.ingredients)
-        ]
-
+def get_by_title(self, title: str) -> Optional[Recipe]:
+        for r in self.recipes:
+            if r.title.lower() == title.lower():
+                return r
+        return None
