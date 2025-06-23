@@ -16,6 +16,8 @@ BASE_DIR = Path(__file__).resolve().parent
 # Data directory and files
 DATA_DIR = Path(os.getenv("DATA_DIR", BASE_DIR / "data"))
 RECIPE_FILE = Path(os.getenv("RECIPE_FILE", DATA_DIR / "recipes.json"))
+# v1.8.0 - Added database path
+DB_PATH = Path(os.getenv("DB_PATH", BASE_DIR / "database" / "recipes.db"))
 
 # Other standard directories
 CONFIG_DIR = BASE_DIR / ".github" / "workflows"
