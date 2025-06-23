@@ -1,14 +1,13 @@
 #!/bin/bash
 
+cd "$(dirname "$0")/.."
+
 # Detect OS type and adjust volume mount path
 if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" || "$OSTYPE" == "cygwin" ]]; then
     VOLUME_PATH="/$(pwd | sed 's|\\|/|g' | sed 's|C:|c|')/data:/app/data"
 else
     VOLUME_PATH="$(pwd)/data:/app/data"
 fi
-
-# NOTE: PowerShell users may experience volume path issues.
-# This script is optimized for Git Bash and Unix-like shells.
 
 mkdir -p logs
 

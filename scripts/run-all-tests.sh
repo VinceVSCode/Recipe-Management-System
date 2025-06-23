@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd "$(dirname "$0")"
+
 echo "🔧 Running test-script.sh (direct RecipeBook usage)..."
 ./test-script.sh
 
