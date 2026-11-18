@@ -1,0 +1,20 @@
+{
+  "id": "recipe-management-system",
+  "title": "Recipe Management System",
+  "track": "software-developer",
+  "summary": "A command-line recipe manager with a menu to add, list, search by title or ingredient, and delete recipes.",
+  "skills": [
+    "Python",
+    "SQLAlchemy",
+    "pandas",
+    "CLI design",
+    "Docker"
+  ],
+  "repo": "https://github.com/VinceVSCode/Recipe-Management-System",
+  "demo_url": null,
+  "thumbnail": null,
+  "demo_media": null,
+  "run_command": "python main.py",
+  "status": "first-attempt",
+  "version": null
+}
